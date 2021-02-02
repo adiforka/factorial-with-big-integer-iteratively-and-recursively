@@ -8,7 +8,6 @@ public class BigIntegerFactorial {
 
     //demo
     public static void main(String[] args) {
-
         Scanner in = new Scanner(System.in);
         System.out.println("Enter an int to get its factorial: ");
         int input = in.nextInt();
@@ -18,7 +17,6 @@ public class BigIntegerFactorial {
     }
 
     public static BigInteger calcFactorialIterative(long num) {
-
         BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= num; i++) {
             result = result.multiply(new BigInteger(i + ""));
@@ -32,13 +30,12 @@ public class BigIntegerFactorial {
 
     private static BigInteger calcFactorialRecursive(long num, BigInteger result) {
 
-        if (num == 1)
-            return result;
-
         //num decrements value for next recursive call, bringing the operation closer to base case
         //the second parameter stores result by multiplying current value of num by the result
         // of all past recursive calls
-        return calcFactorialRecursive(num--,
-                new BigInteger(num + "").multiply(new BigInteger(result + "")));
+        return num == 1
+                ? result
+                : calcFactorialRecursive(num--, new BigInteger(num + "")
+                .multiply(new BigInteger(result + "")));
     }
 }
